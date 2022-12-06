@@ -11,10 +11,8 @@ def execute():
                 start = True
             if start:
                 move_row = [int(s) for s in line.split() if s.isdigit()] # how many, from, to
-                print('THE MOVE: ' + str(move_row))
                 for x in range(move_row[0]):
                     stacks[move_row[2] - 1].append(stacks[move_row[1] - 1].pop())
-                printStacks(stacks)
     finally:
         file.close
 
@@ -26,16 +24,7 @@ def execute():
             top = stack.pop()
 
         top_row += top
-    printStacks(stacks)
     print('THE TOP ROW: ' + top_row)
-
-def printArr(arr):
-    print('\n'.join(arr))
-
-def printStacks(stacks):
-    for stack in stacks:
-        print(stack)
-        print('\n')
 
 def parseInput():
     input_picture = []
@@ -49,12 +38,8 @@ def parseInput():
             input_picture.append(line)
     finally:
         file.close()
-    print("THE INPUT")
-    printArr(input_picture)
-    print("INPUT DONE")
     stacks = []
     num_of_stacks = len(input_picture.pop().split())
-    print(num_of_stacks)
 
     for x in range(num_of_stacks):
         stacks.append([])
@@ -66,8 +51,6 @@ def parseInput():
             if char != '':
                 stacks[idx].append(char)
 
-    print('THE STACKS BEFORE')
-    print(stacks)
     return stacks
 
 execute()
